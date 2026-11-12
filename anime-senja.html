@@ -7,15 +7,15 @@
 <meta name="description" content="Undangan pernikahan digital bergaya ilustrasi anime orisinal: Meyzsa & Fahrezzi, Sabtu 12 Juni 2027, Jakarta.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233b2340'/%3E%3Ccircle cx='16' cy='19' r='7' fill='%23f2a65a'/%3E%3Cpath d='M4 26h24v3H4z' fill='%235b3a7a'/%3E%3C/svg%3E">
 <style>
-@font-face{font-family:'Senja Script';src:url('assets/undangya/anime-senja/font-script.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Anime Display';src:url('assets/undangya/anime-senja/font-hero-display.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}@font-face{font-family:'Anime Kicker';src:url('assets/undangya/anime-senja/font-hero-kicker.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
 :root{--sun:#e8734a;--sun-l:#f2a65a;--plum:#3b2340;--plum2:#5b3a7a;--violet:#8d6bb5;--sakura:#f4a7b9;--sakura-d:#c96f8e;--cream:#fff6ec;--paper:#fdf0e2;--ink:#33203d;--mut:#7d6488;--line:rgba(232,115,74,.4)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:#17101f;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
-.script{font-family:'Senja Script',cursive}
+.script{font-family:'Anime Display',Georgia,serif}
 .serif{font-family:Georgia,'Times New Roman',serif}
 .phone{max-width:430px;margin:0 auto;position:relative;min-height:100dvh;overflow:clip;box-shadow:0 0 90px rgba(0,0,0,.9);background:radial-gradient(120% 30% at 50% -2%,rgba(244,167,185,.3),transparent 55%),radial-gradient(80% 20% at 8% 32%,rgba(141,107,181,.22),transparent 60%),linear-gradient(180deg,#fdeeda 0%,#fbe3d3 38%,#f3d9e8 72%,#e6d6f2 100%)}
-img{max-width:100%;display:block}
+img{max-width:100%;display:block;height:auto}
 button{font-family:inherit;cursor:pointer}
 a{color:inherit}
 /* ===== COVER living scene ===== */
@@ -27,17 +27,13 @@ a{color:inherit}
 @keyframes bgIn{from{opacity:0}to{opacity:1}}
 @keyframes bgDrift{from{transform:scale(1.05) translateY(0)}to{transform:scale(1.05) translateY(-9px)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-/* kereta siluet melayang (kelas melayang): translateX lambat CSS */
-.train{position:absolute;top:58%;left:0;width:100%;z-index:3;pointer-events:none;opacity:0;animation:trainGo 26s 3.5s linear infinite}
-.train i{display:block;width:34%;height:10px;border-radius:5px;background:linear-gradient(90deg,transparent,#2c1a38 18%,#2c1a38 82%,transparent);box-shadow:0 0 0 2px rgba(255,214,150,.25);position:relative}
-.train i::after{content:"";position:absolute;inset:2px 8px;background:repeating-linear-gradient(90deg,rgba(255,226,160,.95) 0 7px,transparent 7px 13px);border-radius:3px}
-@keyframes trainGo{0%{transform:translateX(-38%);opacity:0}5%{opacity:.9}92%{opacity:.9}100%{transform:translateX(108%);opacity:0}}
+/* kereta sampul = sprite lukis generate (kereta-lukis.webp) melintas di atas rel-jembatan */
 /* sakura tegak: pivot pangkal bawah, tanpa geser akar */
-.sakura-b{position:absolute;bottom:-6px;z-index:5;pointer-events:none;transform-origin:50% 100%;animation:swayB 7.5s ease-in-out infinite alternate}
+.sakura-b{position:absolute;bottom:-6px;z-index:5;pointer-events:none;transform-origin:50% 100%;animation:swayB var(--sw,3.6s) cubic-bezier(.37,.02,.63,.98) infinite alternate}
 .sakura-b img{width:100%}
 @keyframes swayB{from{transform:rotate(-1.8deg)}to{transform:rotate(2.4deg)}}
 /* sakura gantung: pivot titik atas */
-.sakura-t{position:absolute;top:-8px;z-index:5;pointer-events:none;transform-origin:50% 0;animation:swayT 8.5s ease-in-out infinite alternate}
+.sakura-t{position:absolute;top:-8px;z-index:5;pointer-events:none;transform-origin:50% 0;animation:swayT var(--sw,4.3s) cubic-bezier(.37,.02,.63,.98) infinite alternate}
 @keyframes swayT{from{transform:rotate(2.2deg)}to{transform:rotate(-2.8deg)}}
 .star{position:absolute;border-radius:50%;background:#fff;animation:twinkle 2.8s ease-in-out infinite alternate;pointer-events:none;z-index:2}
 @keyframes twinkle{from{opacity:.15;transform:scale(.7)}to{opacity:1;transform:scale(1.25)}}
@@ -46,8 +42,8 @@ a{color:inherit}
 @keyframes petalDrift{0%{transform:translate3d(-60px,0,0) rotate(0deg);opacity:0}7%{opacity:.9}50%{transform:translate3d(240px,var(--y50,26px),0) rotate(180deg)}93%{opacity:.85}100%{transform:translate3d(500px,var(--ye,58px),0) rotate(350deg);opacity:0}}
 .cover-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,22,54,.3),transparent 28%,transparent 55%,rgba(43,22,54,.42));z-index:4;pointer-events:none}
 .cover-ui{position:absolute;inset:0;z-index:8;display:flex;flex-direction:column;align-items:center;text-align:center;padding:24px 26px 30px}
-.cover-kicker{margin-top:21%;font-size:11px;letter-spacing:.42em;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(43,22,54,.85);animation:fadeUp 1s 3.2s ease both}
-.cover-names{font-family:'Senja Script',cursive;font-size:64px;line-height:1.15;color:#fffdf6;text-shadow:0 2px 8px rgba(90,40,110,.5),0 0 28px rgba(242,166,90,.6),0 3px 22px rgba(43,22,54,.55);animation:fadeUp 1.1s 3.5s ease both}
+.cover-kicker{font-family:'Anime Kicker',sans-serif;margin-top:21%;font-size:11px;letter-spacing:.42em;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(43,22,54,.85);animation:fadeUp 1s 3.2s ease both}
+.cover-names{font-family:'Anime Display',Georgia,serif;font-size:55px;letter-spacing:.015em;line-height:1.15;color:#fffdf6;text-shadow:0 2px 8px rgba(90,40,110,.5),0 0 28px rgba(242,166,90,.6),0 3px 22px rgba(43,22,54,.55);animation:fadeUp 1.1s 3.5s ease both}
 .cover-names .amp{display:block;font-size:34px;color:var(--sun-l)}
 .cover-date{margin-top:8px;font-size:12px;letter-spacing:.28em;color:#fff3df;background:linear-gradient(135deg,rgba(232,115,74,.5),rgba(141,107,181,.4));padding:6px 14px;border-radius:999px;border:1px solid rgba(255,240,210,.8);animation:fadeUp 1s 3.8s ease both}
 .cover-spacer{flex:1}
@@ -61,16 +57,27 @@ body.opening #cover{animation:pushZoom 1.1s cubic-bezier(.6,0,.8,.4) both}
 /* ===== CONTENT ===== */
 #content{display:none}
 body.opened #content{display:block}
-.world-bg{position:sticky;top:0;height:100dvh;margin-bottom:-100dvh;overflow:hidden;pointer-events:none;z-index:0;background:#e9d6f2}
-.world-stack{position:absolute;left:0;top:0;width:100%;will-change:transform}
-.world-stack img{width:100%;height:auto}
-.world-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(88% 62% at 50% 42%,rgba(255,246,231,.42),rgba(255,246,231,.14) 58%,transparent 82%),linear-gradient(180deg,rgba(255,246,231,.3),rgba(255,246,231,.08) 34%,rgba(255,246,231,.08) 66%,rgba(255,246,231,.34))}
+/* Background GAMBAR unik per section (Program Detail 2026-11-12) + kerudung terang kontras mutlak */
+section{background-size:cover;background-position:center;background-color:#f3d9e8;box-shadow:inset 0 0 0 9999px rgba(253,240,226,.52)}
+#sambutan{background-image:url('assets/undangya/anime-senja/bg-world-1.webp')}
+#mempelai{background-image:url('assets/undangya/anime-senja/bg-world-2.webp')}
+#kisah{background-image:url('assets/undangya/anime-senja/bg-sakura-senja.webp');box-shadow:inset 0 0 0 9999px rgba(253,240,226,.58)}
+#acara{background-image:url('assets/undangya/anime-senja/bg-world-3.webp')}
+#galeri{background-image:url('assets/undangya/anime-senja/bg-world-4.webp')}
+#cuplikan{background-image:url('assets/undangya/anime-senja/bg-world-5.webp')}
+#dresscode{background-image:url('assets/undangya/anime-senja/bg-langit-ungu.webp');box-shadow:inset 0 0 0 9999px rgba(253,240,226,.45)}
+#live{background-image:url('assets/undangya/anime-senja/bg-malam.webp');box-shadow:inset 0 0 0 9999px rgba(253,240,226,.74)}
+#rsvp{background-image:url('assets/undangya/anime-senja/bg-sakura.webp');box-shadow:inset 0 0 0 9999px rgba(253,240,226,.58)}
+#bukutamu{background-image:url('assets/undangya/anime-senja/bg-fajar.webp');box-shadow:inset 0 0 0 9999px rgba(253,240,226,.42)}
+#amplop{background-image:url('assets/undangya/anime-senja/bg-amplop.webp');box-shadow:inset 0 0 0 9999px rgba(253,240,226,.60)}
+#turut{background-image:url('assets/undangya/anime-senja/bg-turut.webp');box-shadow:inset 0 0 0 9999px rgba(253,240,226,.55)}
+#penutup{background-image:url('assets/undangya/anime-senja/bg-penutup.webp');box-shadow:inset 0 0 0 9999px rgba(253,240,226,.55)}
 section{position:relative;padding:60px 24px;z-index:1}
 .sec-head{text-align:center;margin-bottom:28px}
-.sec-kicker{display:inline-block;font-size:10.5px;letter-spacing:.38em;color:#7c2d4e;font-weight:700;background:rgba(255,248,236,.85);padding:5px 12px 4px 16px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line)}
-.sec-title{font-family:Georgia,serif;font-size:29px;font-weight:700;color:var(--ink);margin-top:8px}
+.sec-kicker{font-family:'Anime Kicker',sans-serif;display:inline-block;font-size:10.5px;letter-spacing:.38em;color:#7c2d4e;font-weight:700;background:rgba(255,248,236,.85);padding:5px 12px 4px 16px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line)}
+.sec-title{font-family:'Anime Display',Georgia,serif;font-size:29px;font-weight:700;color:var(--ink);margin-top:8px}
 .sec-sub{font-style:italic;font-size:16.5px;color:var(--mut);margin-top:6px;font-family:Georgia,serif}
-.sec-icon{width:46px;height:46px;margin:0 auto 10px;color:var(--sun)}
+.sec-icon{display:block;width:46px;height:46px;margin:0 auto 10px;color:var(--sun);background:rgba(255,248,236,.92);border-radius:50%;padding:9px;box-shadow:inset 0 0 0 1px var(--line),0 6px 16px rgba(91,58,122,.18)}
 .card{background:linear-gradient(180deg,rgba(255,253,247,.94),rgba(253,240,226,.92));border:1px solid var(--line);border-radius:20px;padding:26px 22px;box-shadow:0 14px 34px rgba(91,58,122,.16);position:relative}
 .card::before{content:"";position:absolute;inset:7px;border:1px solid rgba(232,115,74,.3);border-radius:14px;pointer-events:none}
 .panel{background:linear-gradient(180deg,rgba(255,253,247,.72),rgba(255,244,230,.58));border:1px solid rgba(232,115,74,.35);border-radius:24px;padding:22px 16px;box-shadow:0 14px 30px rgba(91,58,122,.14)}
@@ -79,7 +86,7 @@ section{position:relative;padding:60px 24px;z-index:1}
 .manga img{border-radius:12px;width:100%;height:100%;object-fit:cover}
 .person{text-align:center}
 .person .manga{height:330px;width:min(248px,76%);margin:0 auto}
-.person h3{font-family:'Senja Script',cursive;font-size:38px;color:var(--ink);margin-top:14px;font-weight:400;line-height:1.2}
+.person h3{font-family:'Anime Display',Georgia,serif;font-size:26px;color:var(--ink);margin-top:14px;font-weight:700;line-height:1.35;letter-spacing:.01em}
 .person p{font-size:13.5px;line-height:1.65;color:#5d4568;margin-top:8px}
 .ig-btn{display:inline-block;margin-top:12px;padding:8px 18px;border-radius:999px;border:1px solid var(--sun);color:#b34a26;font-size:12px;font-weight:600;letter-spacing:.08em;text-decoration:none;background:rgba(255,255,255,.65)}
 .hero-frame{height:400px;width:min(290px,82%);margin:0 auto}
@@ -131,7 +138,7 @@ section{position:relative;padding:60px 24px;z-index:1}
 .tl-item p{font-size:13.5px;line-height:1.65;color:#5d4568;margin-top:4px}
 .dress-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
 .dress{text-align:center;padding:18px 10px}
-.swatch{width:52px;height:52px;border-radius:50%;margin:0 auto 9px;border:3px solid #fff;box-shadow:0 6px 16px rgba(59,35,64,.25)}
+.swatch{display:block;width:52px;height:52px;border-radius:50%;margin:0 auto 9px;border:3px solid #fff;box-shadow:0 6px 16px rgba(59,35,64,.25)}
 .dress b{font-size:13.5px;display:block}
 .dress span{font-size:12px;color:var(--mut)}
 .info-list{text-align:left;display:grid;gap:11px;font-size:13.5px;line-height:1.6;color:#5d4568}
@@ -145,9 +152,9 @@ section{position:relative;padding:60px 24px;z-index:1}
 .gt-grid img{width:100%;height:150px;object-fit:cover;border-radius:12px;border:2px solid var(--plum)}
 .gt-del{position:absolute;top:6px;right:6px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(59,35,64,.85);color:#fff;font-size:13px}
 .gt-empty{text-align:center;font-size:13px;color:var(--mut);margin-top:12px}
-.qr-img{width:190px;margin:14px auto;border:2.5px solid var(--plum);border-radius:16px;padding:8px;background:#fff}
+.qr-img{width:190px;height:190px;object-fit:contain;margin:14px auto;border:2.5px solid var(--plum);border-radius:16px;padding:8px;background:#fff}
 .hash{font-family:Georgia,serif;font-size:24px;font-weight:700;color:var(--plum2);text-align:center}
-.penutup-names{font-size:46px;color:var(--ink);line-height:1.25}
+.penutup-names{font-size:33px;color:var(--ink);line-height:1.3}
 .foot-note{text-align:center;font-size:11px;color:var(--mut);padding:0 30px 110px;line-height:1.7}
 #btnMusic{position:fixed;right:calc(50% - 215px + 14px);bottom:24px;z-index:70;width:50px;height:50px;border-radius:50%;border:1px solid #ffd9a8;background:radial-gradient(circle at 32% 28%,var(--plum2),var(--plum) 70%);box-shadow:0 10px 24px rgba(20,10,35,.5);display:none;align-items:center;justify-content:center;color:#ffd9a8}
 body.opened #btnMusic{display:flex}
@@ -180,14 +187,17 @@ body.opened #btnMusic{display:flex}
 .cd-box:nth-child(2){animation-delay:.5s}.cd-box:nth-child(3){animation-delay:1s}.cd-box:nth-child(4){animation-delay:1.5s}
 @keyframes cdPulse{from{transform:translateY(0)}to{transform:translateY(-3px)}}
 .gal-cap{display:inline-block;background:rgba(255,248,236,.92);padding:3px 13px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(232,115,74,.28)}
+.gal-count{width:max-content;max-width:92%;margin:7px auto 0;background:rgba(255,248,236,.92);padding:4px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(232,115,74,.3);color:#54395f;font-weight:600}
+.hash{display:block;width:max-content;max-width:94%;margin:0 auto;background:rgba(255,248,236,.93);padding:8px 20px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(232,115,74,.35)}
+#dresscode .demo-note{background:rgba(255,248,236,.92);padding:9px 14px;border-radius:12px;box-shadow:inset 0 0 0 1px rgba(232,115,74,.3)}
 .sec-title{text-shadow:0 1px 0 rgba(255,248,236,.95),0 0 18px rgba(255,248,236,.9)}
 .sec-sub{color:#54395f;text-shadow:0 1px 0 rgba(255,248,236,.95),0 0 14px rgba(255,248,236,.85)}
 .foot-note{color:#46304f;font-weight:600;text-shadow:0 1px 8px rgba(255,248,236,.95)}
 .panel{background:linear-gradient(180deg,rgba(255,253,247,.9),rgba(255,244,230,.84))}
 .demo-note{color:#54395f}
 .deco{position:absolute;pointer-events:none;z-index:2}
-.deco-tegak{transform-origin:50% 100%;animation:swayB 7.2s cubic-bezier(.37,0,.63,1) infinite alternate}
-.deco-gantung{transform-origin:50% 0;animation:swayT 8.4s cubic-bezier(.37,0,.63,1) infinite alternate}
+.deco-tegak{transform-origin:50% 100%;animation:swayB var(--sw,3.8s) cubic-bezier(.37,.02,.63,.98) infinite alternate}
+.deco-gantung{transform-origin:50% 0;animation:swayT var(--sw,4.1s) cubic-bezier(.37,.02,.63,.98) infinite alternate}
 .deco-fly{animation:decoFly 19s cubic-bezier(.37,0,.63,1) infinite}
 @keyframes decoFly{0%{transform:translate3d(-12px,0,0) rotate(-4deg);opacity:0}8%{opacity:.95}50%{transform:translate3d(150px,-26px,0) rotate(5deg)}92%{opacity:.95}100%{transform:translate3d(320px,4px,0) rotate(-3deg);opacity:0}}
 .strip-img{width:100%;height:150px;object-fit:cover;border-radius:12px}
@@ -212,7 +222,7 @@ section.tone-b::before{background-image:radial-gradient(rgba(201,111,142,.20) 1.
 .kv-frame::after{content:"KEY VISUAL · EP. TERAKHIR MUSIM SENJA";position:absolute;top:-11px;left:16px;background:var(--plum);color:#ffd9a8;font-size:8.5px;letter-spacing:.3em;padding:3px 10px;border-radius:3px;font-weight:700}
 /* jembatan + kereta berkala (lintasan lambat, jeda panjang) */
 .bridge{position:absolute;left:0;top:63.5%;width:100%;z-index:3;pointer-events:none;opacity:.95}
-.train2{position:absolute;left:0;top:58.6%;width:112%;z-index:4;pointer-events:none;opacity:0;animation:trainPass 42s linear infinite}
+.train2{position:absolute;left:0;top:61.3%;width:112%;z-index:4;pointer-events:none;opacity:0;animation:trainPass 42s linear infinite}
 .train2 img{width:33%;opacity:.94}
 .train2 .win-shimmer{position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);animation:winShimmer 2.6s ease-in-out infinite}
 @keyframes trainPass{0%{transform:translateX(-52%);opacity:0}3%{opacity:1}20%{transform:translateX(96%);opacity:1}23%,100%{transform:translateX(110%);opacity:0}}
@@ -233,7 +243,7 @@ section.tone-b::before{background-image:radial-gradient(rgba(201,111,142,.20) 1.
 /* COUNTDOWN = PAPAN JADWAL STASIUN */
 .tt-board{background:linear-gradient(180deg,#2c1a38,#3b2340);border:3px solid #1d1226;border-radius:10px 22px 10px 22px;box-shadow:6px 7px 0 rgba(59,35,64,.8);padding:16px 14px 14px;position:relative;overflow:hidden}
 .tt-board::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,217,168,.13) 1.2px,transparent 1.3px);background-size:13px 13px;pointer-events:none}
-.tt-head{display:flex;justify-content:space-between;align-items:center;color:#ffd9a8;font-size:10.5px;letter-spacing:.24em;font-weight:700;border-bottom:2px dashed rgba(255,217,168,.5);padding-bottom:9px;margin-bottom:12px;position:relative}
+.tt-head{display:flex;justify-content:space-between;align-items:center;gap:8px;white-space:nowrap;color:#ffd9a8;font-size:9.8px;letter-spacing:.17em;font-weight:700;border-bottom:2px dashed rgba(255,217,168,.5);padding-bottom:9px;margin-bottom:12px;position:relative}
 .tt-head .tt-live{color:#ff9d7a;animation:liveBlink 1.6s steps(2,start) infinite}
 @keyframes liveBlink{50%{opacity:.25}}
 .tt-board .countdown{margin:0;position:relative}
@@ -277,9 +287,8 @@ section.tone-b::before{background-image:radial-gradient(rgba(201,111,142,.20) 1.
       <span class="star" style="left:78%;top:7%;width:4px;height:4px;animation-delay:.7s"></span>
       <span class="star" style="left:58%;top:14%;width:3px;height:3px;animation-delay:1.3s"></span>
       <span class="star" style="left:30%;top:16%;width:2.5px;height:2.5px;animation-delay:1.9s"></span>
-      <div class="train" aria-hidden="true"><i></i></div>
       <img class="bridge" src="assets/undangya/anime-senja/rel-jembatan.webp" alt="" width="860" height="120" aria-hidden="true">
-      <div class="train2" aria-hidden="true"><img src="assets/undangya/anime-senja/kereta-senja.webp" alt="" width="880" height="220"><span class="win-shimmer"></span></div>
+      <div class="train2" aria-hidden="true"><img src="assets/undangya/anime-senja/kereta-lukis.webp" alt="" width="880" height="188"><span class="win-shimmer"></span></div>
       <img class="cloud" style="left:-30px;top:11%;width:46%;--cd:52s" src="assets/undangya/anime-senja/awan-senja.webp" alt="" width="520" height="240" aria-hidden="true">
       <img class="cloud cloud-bob" style="right:-36px;top:24%;width:38%;--cd:9.5s" src="assets/undangya/anime-senja/awan-senja.webp" alt="" width="520" height="240" aria-hidden="true">
       <img class="cloud" style="left:16%;top:33%;width:30%;--cd:64s;opacity:.65" src="assets/undangya/anime-senja/awan-senja.webp" alt="" width="520" height="240" aria-hidden="true">
@@ -290,10 +299,14 @@ section.tone-b::before{background-image:radial-gradient(rgba(201,111,142,.20) 1.
       <span class="star" style="left:6%;top:30%;width:2.5px;height:2.5px;animation-delay:1.6s"></span>
       <span class="star" style="left:66%;top:27%;width:3px;height:3px;animation-delay:.9s"></span>
       <div class="kv-frame" aria-hidden="true"></div>
-      <div class="sakura-t" style="left:-14px;width:44%" aria-hidden="true"><img src="assets/undangya/anime-senja/sakura-branch.webp" alt="" width="407" height="429"></div>
-      <div class="sakura-t" style="right:-18px;width:38%;animation-delay:1.2s" aria-hidden="true"><img src="assets/undangya/anime-senja/sakura-branch.webp" alt="" width="407" height="429" style="transform:scaleX(-1)"></div>
-      <div class="sakura-b" style="left:-10px;width:36%" aria-hidden="true"><img src="assets/undangya/anime-senja/sakura-tree.webp" alt="" width="486" height="443"></div>
-      <div class="sakura-b" style="right:-12px;width:30%;animation-delay:1.6s" aria-hidden="true"><img src="assets/undangya/anime-senja/sakura-tree.webp" alt="" width="486" height="443" style="transform:scaleX(-1)"></div>
+      <div class="sakura-t" style="left:-14px;width:44%;--sw:5.2s" aria-hidden="true"><img src="assets/undangya/anime-senja/sakura-branch.webp" alt="" width="407" height="429"></div>
+      <div class="sakura-t" style="right:-18px;width:38%;--sw:3.9s;animation-delay:1.2s" aria-hidden="true"><img src="assets/undangya/anime-senja/sakura-branch.webp" alt="" width="407" height="429" style="transform:scaleX(-1)"></div>
+      <div class="sakura-b" style="left:-10px;width:36%;--sw:3.4s" aria-hidden="true"><img src="assets/undangya/anime-senja/sakura-tree.webp" alt="" width="486" height="443"></div>
+      <div class="sakura-b" style="right:-12px;width:30%;--sw:4.7s;animation-delay:1.6s" aria-hidden="true"><img src="assets/undangya/anime-senja/sakura-tree.webp" alt="" width="486" height="443" style="transform:scaleX(-1)"></div>
+      <img class="deco deco-tegak" style="left:-8px;bottom:148px;width:52px;--sw:4.2s" src="assets/undangya/anime-senja/deco-pampas.webp" alt="" width="428" height="485" aria-hidden="true">
+      <img class="deco deco-tegak" style="right:-6px;bottom:168px;width:46px;--sw:3.3s" src="assets/undangya/anime-senja/deco-lavender.webp" alt="" width="374" height="435" aria-hidden="true">
+      <img class="deco deco-tegak" style="left:6px;bottom:318px;width:40px;--sw:5.1s" src="assets/undangya/anime-senja/deco-kamboja.webp" alt="" width="392" height="381" aria-hidden="true">
+      <img class="deco deco-tegak" style="right:8px;bottom:336px;width:38px;--sw:4.6s" src="assets/undangya/anime-senja/deco-mawar.webp" alt="" width="312" height="381" aria-hidden="true">
       <div class="petal-field" id="petalCover" aria-hidden="true"></div>
       <div class="cover-shade"></div>
       <div class="cover-ui">
@@ -309,7 +322,6 @@ section.tone-b::before{background-image:radial-gradient(rgba(201,111,142,.20) 1.
   </header>
 
   <main id="content">
-    <div class="world-bg" aria-hidden="true"><div class="world-stack" id="worldStack"><img src="assets/undangya/anime-senja/bg-world-1.webp" alt="" width="720" height="518"><img src="assets/undangya/anime-senja/bg-world-2.webp" alt="" width="720" height="432" loading="lazy"><img src="assets/undangya/anime-senja/bg-world-3.webp" alt="" width="720" height="432" loading="lazy"><img src="assets/undangya/anime-senja/bg-world-4.webp" alt="" width="720" height="432" loading="lazy"><img src="assets/undangya/anime-senja/bg-world-5.webp" alt="" width="720" height="346" loading="lazy"></div></div>
 
     <!-- 2. PEMBUKA -->
     <section class="tone-a" id="sambutan">
@@ -325,13 +337,13 @@ section.tone-b::before{background-image:radial-gradient(rgba(201,111,142,.20) 1.
       <div class="card rv" style="text-align:center">
         <p style="font-size:14px;line-height:1.75;color:#5d4568">Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Dengan memohon rahmat dan ridha-Nya, kami bermaksud menyempurnakan separuh agama dalam ikatan pernikahan. Ilustrasi pada undangan ini adalah karya anime orisinal yang diciptakan khusus untuk kisah kami — bukan tokoh dari karya mana pun.</p>
         <div class="manga hero-frame" style="margin-top:20px"><img src="assets/undangya/anime-senja/hero.webp" alt="Ilustrasi anime orisinal Meyzsa dan Fahrezzi dalam busana pengantin saat senja" width="640" height="800"></div>
-        <p class="script" style="font-size:32px;margin-top:16px">Meyzsa &amp; Fahrezzi</p>
+        <p class="script" style="font-size:27px;margin-top:16px">Meyzsa &amp; Fahrezzi</p>
       </div>
     </section>
 
     <!-- 3. MEMPELAI -->
     <section class="tone-b" id="mempelai">
-      <img class="deco deco-tegak" style="left:2px;bottom:8px;width:62px" src="assets/undangya/anime-senja/deco-kamboja.webp" alt="" width="392" height="381" loading="lazy" aria-hidden="true">
+      <img class="deco deco-tegak" style="left:2px;bottom:8px;width:62px;--sw:3.1s" src="assets/undangya/anime-senja/deco-kamboja.webp" alt="" width="392" height="381" loading="lazy" aria-hidden="true">
       <div class="sec-head rv">
         <span class="sec-kicker">DUA PEMERAN UTAMA</span>
         <h2 class="sec-title">Mempelai</h2>
@@ -355,7 +367,7 @@ section.tone-b::before{background-image:radial-gradient(rgba(201,111,142,.20) 1.
 
     <!-- 11. LOVE STORY -->
     <section class="tone-a" id="kisah">
-      <img class="deco deco-fly" style="left:0;top:34px;width:58px" src="assets/undangya/anime-senja/deco-kupu.webp" alt="" width="500" height="595" loading="lazy" aria-hidden="true">
+      <img class="deco deco-fly" style="left:0;top:8px;width:46px;opacity:.92" src="assets/undangya/anime-senja/deco-kupu.webp" alt="" width="500" height="595" loading="lazy" aria-hidden="true">
       <div class="sec-head rv">
         <span class="sec-kicker">LOVE STORY · RUTE 4 STASIUN</span>
         <h2 class="sec-title">Kisah Kami</h2>
@@ -425,7 +437,7 @@ section.tone-b::before{background-image:radial-gradient(rgba(201,111,142,.20) 1.
 
     <!-- 10. GALERI REL GESER -->
     <section class="tone-a" id="galeri">
-      <img class="deco deco-tegak" style="right:10px;top:120px;width:56px" src="assets/undangya/anime-senja/deco-lavender.webp" alt="" width="374" height="435" loading="lazy" aria-hidden="true">
+      <img class="deco deco-tegak" style="right:10px;top:120px;width:56px;--sw:4.4s" src="assets/undangya/anime-senja/deco-lavender.webp" alt="" width="374" height="435" loading="lazy" aria-hidden="true">
       <div class="sec-head rv">
         <span class="sec-kicker">GALERI · GESER KANAN–KIRI</span>
         <h2 class="sec-title">Galeri Senja Kami</h2>
@@ -447,7 +459,7 @@ section.tone-b::before{background-image:radial-gradient(rgba(201,111,142,.20) 1.
 
     <!-- 18. VIDEO TEASER -->
     <section class="tone-b" id="cuplikan">
-      <img class="deco deco-tegak" style="left:4px;top:60px;width:64px" src="assets/undangya/anime-senja/sakura-tree.webp" alt="" width="486" height="443" loading="lazy" aria-hidden="true">
+      <img class="deco deco-tegak" style="left:4px;top:60px;width:64px;--sw:5.4s" src="assets/undangya/anime-senja/sakura-tree.webp" alt="" width="486" height="443" loading="lazy" aria-hidden="true">
       <div class="sec-head rv">
         <span class="sec-kicker">VIDEO TEASER</span>
         <h2 class="sec-title">Cuplikan Video</h2>
@@ -461,7 +473,7 @@ section.tone-b::before{background-image:radial-gradient(rgba(201,111,142,.20) 1.
 
     <!-- 12. DRESSCODE -->
     <section class="tone-a" id="dresscode">
-      <img class="deco deco-tegak" style="right:2px;top:70px;width:58px" src="assets/undangya/anime-senja/sakura-branch.webp" alt="" width="407" height="429" loading="lazy" aria-hidden="true">
+      <img class="deco deco-tegak" style="right:2px;top:70px;width:58px;--sw:3.7s" src="assets/undangya/anime-senja/sakura-branch.webp" alt="" width="407" height="429" loading="lazy" aria-hidden="true">
       <div class="sec-head rv">
         <span class="sec-kicker">DRESSCODE</span>
         <h2 class="sec-title">Nuansa Senja</h2>
@@ -478,7 +490,7 @@ section.tone-b::before{background-image:radial-gradient(rgba(201,111,142,.20) 1.
 
     <!-- 16+17. LIVE STREAMING + HASHTAG & GALERI TAMU -->
     <section class="tone-b" id="live">
-      <img class="deco deco-gantung" style="right:6px;top:-4px;width:44px" src="assets/undangya/anime-senja/deco-lentera.webp" alt="" width="222" height="340" loading="lazy" aria-hidden="true">
+      <img class="deco deco-gantung" style="right:6px;top:-4px;width:44px;--sw:3.5s" src="assets/undangya/anime-senja/deco-lentera.webp" alt="" width="222" height="340" loading="lazy" aria-hidden="true">
       <div class="sec-head rv">
         <span class="sec-kicker">LIVE STREAMING · DEMO</span>
         <h2 class="sec-title">Saksikan dari Jauh</h2>
@@ -505,7 +517,7 @@ section.tone-b::before{background-image:radial-gradient(rgba(201,111,142,.20) 1.
 
     <!-- 6. RSVP + DINDING UCAPAN -->
     <section class="tone-a" id="rsvp">
-      <img class="deco deco-tegak" style="left:2px;bottom:10px;width:54px" src="assets/undangya/anime-senja/deco-mawar.webp" alt="" width="312" height="381" loading="lazy" aria-hidden="true">
+      <img class="deco deco-tegak" style="left:2px;bottom:10px;width:54px;--sw:4.9s" src="assets/undangya/anime-senja/deco-mawar.webp" alt="" width="312" height="381" loading="lazy" aria-hidden="true">
       <div class="sec-head rv">
         <span class="sec-kicker">RSVP &amp; UCAPAN</span>
         <h2 class="sec-title">Konfirmasi &amp; Doa</h2>
@@ -586,7 +598,7 @@ section.tone-b::before{background-image:radial-gradient(rgba(201,111,142,.20) 1.
 
     <!-- 8. PENUTUP -->
     <section class="tone-a" id="penutup" style="text-align:center">
-      <img class="deco deco-tegak" style="right:10px;bottom:8px;width:60px" src="assets/undangya/anime-senja/deco-pampas.webp" alt="" width="428" height="485" loading="lazy" aria-hidden="true">
+      <img class="deco deco-tegak" style="right:10px;bottom:8px;width:60px;--sw:2.9s" src="assets/undangya/anime-senja/deco-pampas.webp" alt="" width="428" height="485" loading="lazy" aria-hidden="true">
       <div class="sec-head rv">
         <span class="sec-kicker">PENUTUP</span>
         <h2 class="sec-title">Terima Kasih</h2>
@@ -657,7 +669,7 @@ function initReveal(){
   var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target);}});},{threshold:.12});
   items.forEach(function(e){io.observe(e);});
 }
-/* world-bg statis berlapis — ambient 100% CSS kompositor, tanpa JS per-frame */
+/* background per section = gambar unik via CSS — ambient 100% CSS kompositor, tanpa JS per-frame */
 /* galeri rel geser: indikator + lightbox */
 var rail=document.getElementById("galRail"),dots=document.getElementById("galDots"),count=document.getElementById("galCount"),slides=rail?rail.children.length:0;
 if(rail){
